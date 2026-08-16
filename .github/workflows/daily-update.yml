@@ -1,0 +1,34 @@
+name: Logisticiti briefing update
+
+on:
+  schedule:
+    # Runs at 00:00, 10:00 and 20:00 UTC — approximately every 10 hours.
+    # In UAE time (UTC+4) that's roughly 04:00, 14:00, and 00:00 Gulf Standard Time.
+    - cron: '0 0,10,20 * * *'
+  workflow_dispatch: {}   # lets you trigger it manually from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate latest content
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node generate-content.js
+
+      - name: Commit updated data.json
+        run: |
+          git config user.name "logisticiti-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data.json
+          git diff --quiet --cached || git commit -m "Briefing update: $(date -u +%Y-%m-%dT%H:%M)Z"
+          git push
