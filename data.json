@@ -1,0 +1,113 @@
+{
+  "last_synced": "2026-08-16T10:00:00Z",
+  "items": [
+    {
+      "code": "MKT-041",
+      "category": "market",
+      "title": "Maersk raises full-year guidance after strong Q2",
+      "summary": "Maersk posted Q2 EBITDA of $3.0bn on higher ocean spot rates, and lifted its 2026 full-year guidance well above prior levels. The company said the Middle East situation's financial impact was offset by stronger volumes and rates.",
+      "source": "Maersk",
+      "url": "https://www.maersk.com/news/articles/2026/08/13/maersk-updates-guidance-for-full-year-2026",
+      "date": "2026-08-13"
+    },
+    {
+      "code": "MKT-042",
+      "category": "market",
+      "title": "DP World revenue up 13% as network absorbs Middle East disruption",
+      "summary": "DP World's H1 2026 revenue rose to $12.7bn even as regional conflict cut vessel traffic through Jebel Ali. Growth across logistics, marine services and its wider ports portfolio offset the weaker activity at its home hub.",
+      "source": "DP World",
+      "url": "https://www.dpworld.com/en/news/dp-world-revenue-rises-131-to-127-billion-as-global-portfolio-navigates-trade-disruption",
+      "date": "2026-08-13"
+    },
+    {
+      "code": "MKT-043",
+      "category": "market",
+      "title": "Transpacific ocean rates ease off July's highs",
+      "summary": "Space to the U.S. West Coast has improved after carriers added deployments, though East and Gulf Coast capacity stays tighter. Panama Canal restrictions and South China weather keep pressuring cost and schedule reliability.",
+      "source": "J.M. Rodgers Co.",
+      "url": "https://www.jmrodgers.com/august-2026-freight-market-update/",
+      "date": "2026-08-09"
+    },
+    {
+      "code": "MKT-044",
+      "category": "market",
+      "title": "Typhoon Dolphin adds to East Asia port congestion",
+      "summary": "The storm's landfall near Ningbo has compounded existing congestion across East Asian ports, with knock-on effects expected for transpacific sailing schedules over the coming weeks.",
+      "source": "The Loadstar",
+      "url": "https://theloadstar.com/",
+      "date": "2026-08-12"
+    },
+    {
+      "code": "ADV-021",
+      "category": "advisory",
+      "title": "DP World to invest $3bn across UAE, Saudi, India and DR Congo",
+      "summary": "DP World confirmed roughly $3bn in 2026 capital spending directed at new capacity in the UAE, Saudi Arabia, India and the Democratic Republic of Congo, including two new terminals in Fujairah extending the Jebel Ali ecosystem.",
+      "source": "The National",
+      "url": "https://www.thenationalnews.com/business/economy/2026/08/13/dp-world-plans-major-investments-worth-3-billion/",
+      "date": "2026-08-13"
+    },
+    {
+      "code": "ADV-022",
+      "category": "advisory",
+      "title": "Emirates SkyCargo flies UAE's first AI-enabled satellite to launch site",
+      "summary": "Emirates SkyCargo transported Altair-1, an Emirates-built earth observation satellite, from Dubai to Los Angeles on a dedicated 777 freighter ahead of its October launch, under the carrier's aerospace logistics product.",
+      "source": "Air Cargo News",
+      "url": "https://www.aircargonews.net/airlines/2026/08/emirates-skycargo-in-out-of-this-world-transport/",
+      "date": "2026-08-14"
+    },
+    {
+      "code": "ADV-023",
+      "category": "advisory",
+      "title": "Emirates SkyCargo confirms up to 10 new 777 freighters by year-end",
+      "summary": "Emirates SkyCargo expects to take delivery of up to ten Boeing 777 freighters in 2026, pushing its fleet toward 21 aircraft and supporting a plan to double capacity and add 20 new freighter destinations.",
+      "source": "Air Cargo News",
+      "url": "https://www.aircargonews.net/airlines/emirates-skycargo-aims-to-add-10-777fs-in-2026/1081079.article",
+      "date": "2026-08-05"
+    },
+    {
+      "code": "ADV-024",
+      "category": "advisory",
+      "title": "DP World takes over six UK grocery logistics sites from GXO",
+      "summary": "DP World has agreed to take on six UK contract-logistics sites serving Asda, Sainsbury's and the Co-op, adding roughly 2 million sq ft of warehouse space and around 2,000 staff, as a regulatory condition of GXO's Wincanton deal.",
+      "source": "GlobeNewswire",
+      "url": "https://www.globenewswire.com/news-release/2026/08/06/3340006/0/en/dp-world-grows-uk-logistics-operations-with-transfer-of-six-uk-grocery-sites-from-gxo.html",
+      "date": "2026-08-06"
+    },
+    {
+      "code": "ADV-025",
+      "category": "advisory",
+      "title": "DP World opens €48m cold-chain hub at Port of Antwerp",
+      "summary": "DP World is building a new temperature-controlled logistics facility next to its Antwerp Gateway terminal, aimed at pharma, healthcare and perishables customers, with construction beginning in 2027.",
+      "source": "DP World",
+      "url": "https://www.dpworld.com/en/news/dp-world-expands-cold-chain-capabilities-with-new-48m-antwerp-hub",
+      "date": "2026-08-05"
+    },
+    {
+      "code": "ADV-026",
+      "category": "advisory",
+      "title": "Maersk agrees to sell its training arm",
+      "summary": "Maersk announced an agreement to divest Maersk Training, part of a broader run of portfolio moves in August that also included a new cold-chain ocean service linking Chile to the U.S. East Coast.",
+      "source": "Maersk",
+      "url": "https://www.maersk.com/press",
+      "date": "2026-08-07"
+    },
+    {
+      "code": "OPN-031",
+      "category": "opinion",
+      "title": "Forwarders move AI agents from pilot to production",
+      "summary": "Major players including C.H. Robinson and Kuehne+Nagel are moving AI agents out of pilot phase into live operations, with industry commentary framing it as the biggest structural shift in forwarding workflows in years — though fragmented legacy systems remain a drag on adoption.",
+      "source": "The Loadstar",
+      "url": "https://theloadstar.com/",
+      "date": "2026-08-12"
+    },
+    {
+      "code": "OPN-032",
+      "category": "opinion",
+      "title": "C.H. Robinson: air and ocean markets are decoupling by region",
+      "summary": "C.H. Robinson's August outlook describes air freight demand as increasingly localized — AI-related exports lifting select Asian origins while Europe softens — even as ocean freight sees broadly easing demand and improving space on several lanes.",
+      "source": "C.H. Robinson",
+      "url": "https://www.chrobinson.com/en-us/resources/insights-and-advisories/north-america-freight-insights/aug-2026-freight-market-update/",
+      "date": "2026-08-10"
+    }
+  ]
+}

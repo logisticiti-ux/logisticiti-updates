@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logisticiti Intelligence — Daily Freight, Ocean &amp; Air Cargo Briefing</title>
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#E4212B;
+    --black:#111111;
+    --paper:#FFFFFF;
+    --offwhite:#FAFAF9;
+    --steel:#4A4A4A;
+    --line: rgba(17,17,17,0.12);
+    --muted:#6B6B6B;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--black);
+    font-family:'Source Serif 4', Georgia, serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  img{max-width:100%;}
+
+  /* ---- ticker ---- */
+  .ticker-wrap{
+    background:var(--black);
+    color:#fff;
+    overflow:hidden;
+    white-space:nowrap;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:.03em;
+  }
+  .ticker{
+    display:inline-block;
+    padding:8px 0;
+    animation:scroll 40s linear infinite;
+  }
+  .ticker span{margin-right:44px;}
+  .ticker .dot{color:var(--red); margin-right:8px;}
+  @keyframes scroll{
+    0%{transform:translateX(0);}
+    100%{transform:translateX(-50%);}
+  }
+  @media (prefers-reduced-motion: reduce){ .ticker{animation:none;} }
+
+  /* ---- header ---- */
+  header{
+    background:var(--paper);
+    padding:32px 6vw 26px;
+    border-bottom:3px solid var(--black);
+  }
+  .brand-row{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:22px;
+  }
+  .brand-row img{height:38px; width:auto;}
+  .brand-row .brand-name{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:19px;
+    letter-spacing:-0.01em;
+  }
+  .brand-row .brand-name .accent{color:var(--red);}
+
+  h1{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:clamp(30px,4.4vw,50px);
+    line-height:1.03;
+    margin:0 0 10px;
+    letter-spacing:-0.01em;
+  }
+  h1 .accent{color:var(--red);}
+  .tagline{
+    font-size:15.5px;
+    color:var(--steel);
+    max-width:640px;
+    margin:0 0 24px;
+    line-height:1.55;
+  }
+  .board{
+    display:flex;
+    flex-wrap:wrap;
+    gap:22px;
+    align-items:flex-end;
+    border-top:1px solid var(--line);
+    padding-top:18px;
+  }
+  .board-item{font-family:'IBM Plex Mono',monospace;}
+  .board-label{
+    font-size:10px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:6px;
+  }
+  .flip{
+    display:inline-block;
+    background:var(--black);
+    color:#fff;
+    padding:6px 10px;
+    font-size:14px;
+    font-weight:600;
+    border-radius:2px;
+    letter-spacing:.03em;
+  }
+  .flip.red{background:var(--red);}
+
+  /* ---- filters ---- */
+  .filters{
+    position:sticky; top:0; z-index:5;
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+    padding:14px 6vw;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .filter-btn{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    background:transparent;
+    border:1px solid var(--black);
+    color:var(--black);
+    padding:9px 16px;
+    border-radius:20px;
+    cursor:pointer;
+    transition:all .15s ease;
+  }
+  .filter-btn:hover{background:var(--offwhite);}
+  .filter-btn.active{
+    background:var(--black);
+    color:#fff;
+    border-color:var(--black);
+  }
+
+  /* ---- layout ---- */
+  main{
+    padding:32px 6vw 80px;
+    display:grid;
+    grid-template-columns: 2.1fr 1fr;
+    gap:28px;
+    align-items:start;
+  }
+  @media (max-width:880px){
+    main{ grid-template-columns: 1fr; }
+  }
+
+  .feed{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+    gap:20px;
+  }
+  .card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:3px;
+    padding:20px 20px 18px;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .card:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 22px rgba(17,17,17,0.08);
+  }
+  .card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:12px;
+  }
+  .code{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    color:var(--muted);
+    letter-spacing:.05em;
+  }
+  .stamp{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    border:1.5px solid currentColor;
+    border-radius:20px;
+    padding:3px 10px;
+    transform:rotate(-3deg);
+  }
+  .stamp.market{color:var(--black);}
+  .stamp.advisory{color:var(--red);}
+  .stamp.opinion{color:#8A5A00;}
+
+  .card h3{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:18px;
+    line-height:1.28;
+    margin:0 0 9px;
+    color:var(--black);
+  }
+  .card p{
+    font-size:14.5px;
+    line-height:1.55;
+    color:#333;
+    margin:0 0 16px;
+    flex-grow:1;
+  }
+  .card-foot{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    color:var(--muted);
+    border-top:1px dashed var(--line);
+    padding-top:12px;
+  }
+  .card-foot a{
+    color:var(--red);
+    text-decoration:none;
+    font-weight:600;
+  }
+  .card-foot a:hover{text-decoration:underline;}
+
+  /* ---- sidebar ---- */
+  .sidebar{
+    position:sticky;
+    top:70px;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+  }
+  .promo-card{
+    border:1px solid var(--black);
+    border-radius:4px;
+    overflow:hidden;
+    background:#fff;
+  }
+  .promo-card .promo-head{
+    background:var(--black);
+    color:#fff;
+    padding:14px 18px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .promo-card .promo-head .dot{color:var(--red);}
+  .promo-body{padding:18px;}
+  .promo-body h4{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:17px;
+    margin:0 0 8px;
+  }
+  .promo-body p{
+    font-size:13.5px;
+    color:var(--steel);
+    line-height:1.5;
+    margin:0 0 14px;
+  }
+  .product-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px 0;
+    border-top:1px solid var(--line);
+    font-size:13.5px;
+  }
+  .product-row:first-of-type{border-top:none;}
+  .product-row .pname{font-weight:600;}
+  .product-row .pprice{
+    font-family:'IBM Plex Mono',monospace;
+    color:var(--red);
+    font-weight:600;
+  }
+  .btn{
+    display:block;
+    text-align:center;
+    background:var(--red);
+    color:#fff !important;
+    text-decoration:none;
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:600;
+    font-size:13.5px;
+    padding:11px 14px;
+    border-radius:3px;
+    margin-top:14px;
+    transition:opacity .15s ease;
+  }
+  .btn:hover{opacity:.85;}
+  .btn.outline{
+    background:transparent;
+    color:var(--black) !important;
+    border:1.5px solid var(--black);
+  }
+
+  .ad-card{
+    border:1.5px dashed var(--red);
+    border-radius:4px;
+    padding:20px 18px;
+    background:#FFF8F8;
+  }
+  .ad-card .ad-eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--red);
+    margin-bottom:10px;
+  }
+  .ad-card h4{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:17px;
+    margin:0 0 8px;
+  }
+  .ad-card p{
+    font-size:13.5px;
+    color:var(--steel);
+    line-height:1.5;
+    margin:0 0 4px;
+  }
+
+  footer{
+    background:var(--black);
+    color:#B8B8B8;
+    padding:30px 6vw;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  footer a{color:var(--red); text-decoration:none;}
+
+  .empty{
+    font-family:'IBM Plex Mono',monospace;
+    color:var(--muted);
+    padding:60px 0;
+    text-align:center;
+  }
+</style>
+</head>
+<body>
+
+<div class="ticker-wrap">
+  <div class="ticker" id="ticker"></div>
+</div>
+
+<header>
+  <div class="brand-row">
+    <img src="assets/logo.svg" alt="Logisticiti logo">
+    <div class="brand-name">Logisticiti<span class="accent"> Connect</span></div>
+  </div>
+  <h1>Daily <span class="accent">Manifest</span></h1>
+  <p class="tagline">Trending market moves, carrier &amp; press advisories, and expert analysis across freight forwarding, ocean and air cargo — pulled from shipping lines, forwarders, airlines and major trade media worldwide, deduplicated and sourced.</p>
+  <div class="board">
+    <div class="board-item">
+      <div class="board-label">Last Synced (UAE)</div>
+      <div class="flip" id="synced">—</div>
+    </div>
+    <div class="board-item">
+      <div class="board-label">Entries</div>
+      <div class="flip red" id="count">—</div>
+    </div>
+  </div>
+</header>
+
+<div class="filters" id="filters">
+  <button class="filter-btn active" data-cat="all">All</button>
+  <button class="filter-btn" data-cat="market">Market Pulse</button>
+  <button class="filter-btn" data-cat="advisory">Advisories &amp; Press</button>
+  <button class="filter-btn" data-cat="opinion">Analysis &amp; Opinion</button>
+</div>
+
+<main>
+  <div class="feed" id="feed"></div>
+
+  <aside class="sidebar">
+    <div class="promo-card">
+      <div class="promo-head"><span>Logisticiti Store</span><span class="dot">●</span></div>
+      <div class="promo-body">
+        <h4>Tools built for freight &amp; forwarding teams</h4>
+        <p>Ready-to-use trackers and calculators from Logisticiti Connect — download and start using today.</p>
+        <div class="product-row">
+          <span class="pname">WhatsApp Lead Tracker</span>
+          <span class="pprice">$10</span>
+        </div>
+        <div class="product-row">
+          <span class="pname">Cargo Volumetric &amp; Chargeable Weight Calculator</span>
+          <span class="pprice">$10</span>
+        </div>
+        <div class="product-row">
+          <span class="pname">AI Prompts, CRM &amp; Shipping Docs</span>
+          <span class="pprice">Coming soon</span>
+        </div>
+        <a class="btn" href="https://logisticiti.gumroad.com/" target="_blank" rel="noopener">Shop the Store →</a>
+      </div>
+    </div>
+
+    <div class="ad-card">
+      <div class="ad-eyebrow">Advertise With Us</div>
+      <h4>Reach freight &amp; logistics decision-makers</h4>
+      <p>Logisticiti Connect is welcoming brands who want to promote their products or services to our LinkedIn logistics community.</p>
+      <a class="btn outline" href="https://www.linkedin.com/company/logisticiti" target="_blank" rel="noopener">Get in touch on LinkedIn →</a>
+    </div>
+  </aside>
+</main>
+
+<footer>
+  <div>Logisticiti Intelligence — sourced &amp; summarized, never syndicated. Always verify against the original before citing.</div>
+  <div><a href="https://www.linkedin.com/company/logisticiti" target="_blank" rel="noopener">linkedin.com/company/logisticiti</a></div>
+</footer>
+
+<script>
+const CATEGORY_LABEL = { market:'Market', advisory:'Advisory', opinion:'Opinion' };
+
+const FALLBACK_DATA = {
+  "last_synced": "2026-08-16T10:00:00Z",
+  "items": [
+    {
+      "code": "MKT-041",
+      "category": "market",
+      "title": "Maersk raises full-year guidance after strong Q2",
+      "summary": "Maersk posted Q2 EBITDA of $3.0bn on higher ocean spot rates, and lifted its 2026 full-year guidance well above prior levels. The company said the Middle East situation's financial impact was offset by stronger volumes and rates.",
+      "source": "Maersk",
+      "url": "https://www.maersk.com/news/articles/2026/08/13/maersk-updates-guidance-for-full-year-2026",
+      "date": "2026-08-13"
+    },
+    {
+      "code": "MKT-042",
+      "category": "market",
+      "title": "DP World revenue up 13% as network absorbs Middle East disruption",
+      "summary": "DP World's H1 2026 revenue rose to $12.7bn even as regional conflict cut vessel traffic through Jebel Ali. Growth across logistics, marine services and its wider ports portfolio offset the weaker activity at its home hub.",
+      "source": "DP World",
+      "url": "https://www.dpworld.com/en/news/dp-world-revenue-rises-131-to-127-billion-as-global-portfolio-navigates-trade-disruption",
+      "date": "2026-08-13"
+    },
+    {
+      "code": "MKT-043",
+      "category": "market",
+      "title": "Transpacific ocean rates ease off July's highs",
+      "summary": "Space to the U.S. West Coast has improved after carriers added deployments, though East and Gulf Coast capacity stays tighter. Panama Canal restrictions and South China weather keep pressuring cost and schedule reliability.",
+      "source": "J.M. Rodgers Co.",
+      "url": "https://www.jmrodgers.com/august-2026-freight-market-update/",
+      "date": "2026-08-09"
+    },
+    {
+      "code": "MKT-044",
+      "category": "market",
+      "title": "Typhoon Dolphin adds to East Asia port congestion",
+      "summary": "The storm's landfall near Ningbo has compounded existing congestion across East Asian ports, with knock-on effects expected for transpacific sailing schedules over the coming weeks.",
+      "source": "The Loadstar",
+      "url": "https://theloadstar.com/",
+      "date": "2026-08-12"
+    },
+    {
+      "code": "ADV-021",
+      "category": "advisory",
+      "title": "DP World to invest $3bn across UAE, Saudi, India and DR Congo",
+      "summary": "DP World confirmed roughly $3bn in 2026 capital spending directed at new capacity in the UAE, Saudi Arabia, India and the Democratic Republic of Congo, including two new terminals in Fujairah extending the Jebel Ali ecosystem.",
+      "source": "The National",
+      "url": "https://www.thenationalnews.com/business/economy/2026/08/13/dp-world-plans-major-investments-worth-3-billion/",
+      "date": "2026-08-13"
+    },
+    {
+      "code": "ADV-022",
+      "category": "advisory",
+      "title": "Emirates SkyCargo flies UAE's first AI-enabled satellite to launch site",
+      "summary": "Emirates SkyCargo transported Altair-1, an Emirates-built earth observation satellite, from Dubai to Los Angeles on a dedicated 777 freighter ahead of its October launch, under the carrier's aerospace logistics product.",
+      "source": "Air Cargo News",
+      "url": "https://www.aircargonews.net/airlines/2026/08/emirates-skycargo-in-out-of-this-world-transport/",
+      "date": "2026-08-14"
+    },
+    {
+      "code": "ADV-023",
+      "category": "advisory",
+      "title": "Emirates SkyCargo confirms up to 10 new 777 freighters by year-end",
+      "summary": "Emirates SkyCargo expects to take delivery of up to ten Boeing 777 freighters in 2026, pushing its fleet toward 21 aircraft and supporting a plan to double capacity and add 20 new freighter destinations.",
+      "source": "Air Cargo News",
+      "url": "https://www.aircargonews.net/airlines/emirates-skycargo-aims-to-add-10-777fs-in-2026/1081079.article",
+      "date": "2026-08-05"
+    },
+    {
+      "code": "ADV-024",
+      "category": "advisory",
+      "title": "DP World takes over six UK grocery logistics sites from GXO",
+      "summary": "DP World has agreed to take on six UK contract-logistics sites serving Asda, Sainsbury's and the Co-op, adding roughly 2 million sq ft of warehouse space and around 2,000 staff, as a regulatory condition of GXO's Wincanton deal.",
+      "source": "GlobeNewswire",
+      "url": "https://www.globenewswire.com/news-release/2026/08/06/3340006/0/en/dp-world-grows-uk-logistics-operations-with-transfer-of-six-uk-grocery-sites-from-gxo.html",
+      "date": "2026-08-06"
+    },
+    {
+      "code": "ADV-025",
+      "category": "advisory",
+      "title": "DP World opens €48m cold-chain hub at Port of Antwerp",
+      "summary": "DP World is building a new temperature-controlled logistics facility next to its Antwerp Gateway terminal, aimed at pharma, healthcare and perishables customers, with construction beginning in 2027.",
+      "source": "DP World",
+      "url": "https://www.dpworld.com/en/news/dp-world-expands-cold-chain-capabilities-with-new-48m-antwerp-hub",
+      "date": "2026-08-05"
+    },
+    {
+      "code": "ADV-026",
+      "category": "advisory",
+      "title": "Maersk agrees to sell its training arm",
+      "summary": "Maersk announced an agreement to divest Maersk Training, part of a broader run of portfolio moves in August that also included a new cold-chain ocean service linking Chile to the U.S. East Coast.",
+      "source": "Maersk",
+      "url": "https://www.maersk.com/press",
+      "date": "2026-08-07"
+    },
+    {
+      "code": "OPN-031",
+      "category": "opinion",
+      "title": "Forwarders move AI agents from pilot to production",
+      "summary": "Major players including C.H. Robinson and Kuehne+Nagel are moving AI agents out of pilot phase into live operations, with industry commentary framing it as the biggest structural shift in forwarding workflows in years — though fragmented legacy systems remain a drag on adoption.",
+      "source": "The Loadstar",
+      "url": "https://theloadstar.com/",
+      "date": "2026-08-12"
+    },
+    {
+      "code": "OPN-032",
+      "category": "opinion",
+      "title": "C.H. Robinson: air and ocean markets are decoupling by region",
+      "summary": "C.H. Robinson's August outlook describes air freight demand as increasingly localized — AI-related exports lifting select Asian origins while Europe softens — even as ocean freight sees broadly easing demand and improving space on several lanes.",
+      "source": "C.H. Robinson",
+      "url": "https://www.chrobinson.com/en-us/resources/insights-and-advisories/north-america-freight-insights/aug-2026-freight-market-update/",
+      "date": "2026-08-10"
+    }
+  ]
+};
+
+function fmtDate(iso){
+  const d = new Date(iso);
+  return d.toLocaleDateString('en-US',{month:'short', day:'2-digit', year:'numeric'});
+}
+
+function render(data){
+  // Show "last synced" in UAE time (UTC+4)
+  const synced = new Date(data.last_synced);
+  document.getElementById('synced').textContent =
+    synced.toLocaleString('en-US',{month:'short', day:'2-digit', hour:'2-digit', minute:'2-digit', timeZone:'Asia/Dubai'}) + ' GST';
+  document.getElementById('count').textContent = String(data.items.length).padStart(2,'0');
+
+  // ticker
+  const ticker = document.getElementById('ticker');
+  const headlines = data.items.map(i => `<span><span class="dot">◆</span>[${i.code}] ${i.title}</span>`);
+  ticker.innerHTML = headlines.join('') + headlines.join(''); // duplicate for seamless loop
+
+  const feed = document.getElementById('feed');
+
+  function draw(cat){
+    const items = cat === 'all' ? data.items : data.items.filter(i => i.category === cat);
+    if(!items.length){
+      feed.innerHTML = '<div class="empty">No entries in this category yet.</div>';
+      return;
+    }
+    feed.innerHTML = items.map(i => `
+      <article class="card">
+        <div class="card-top">
+          <span class="code">${i.code}</span>
+          <span class="stamp ${i.category}">${CATEGORY_LABEL[i.category] || i.category}</span>
+        </div>
+        <h3>${i.title}</h3>
+        <p>${i.summary}</p>
+        <div class="card-foot">
+          <span>${i.source} · ${fmtDate(i.date)}</span>
+          <a href="${i.url}" target="_blank" rel="noopener">Source →</a>
+        </div>
+      </article>
+    `).join('');
+  }
+
+  draw('all');
+
+  document.querySelectorAll('.filter-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      draw(btn.dataset.cat);
+    });
+  });
+}
+
+fetch('data.json', {cache:'no-store'})
+  .then(r => { if(!r.ok) throw new Error('no data.json'); return r.json(); })
+  .then(render)
+  .catch(() => render(FALLBACK_DATA));
+</script>
+
+</body>
+</html>
