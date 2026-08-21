@@ -45,7 +45,7 @@ CRITICAL — AVOID DUPLICATES:
 The portal already has these stories published. Do NOT repeat any of them, or near-duplicates of the same underlying event:
 ${existingTitles || '(none yet)'}
 
-Return ONLY valid JSON (no markdown fences, no commentary) matching exactly this shape:
+You may think through and narrate your search process as you go. But your VERY LAST message must contain NOTHING except the raw JSON object below — no markdown fences, no commentary, no "here is the JSON", no draft write-up first. Just the JSON, matching exactly this shape:
 
 {
   "items": [
@@ -93,18 +93,28 @@ async function generate() {
 
   const data = await response.json();
 
-  // The model may emit multiple content blocks (search calls + text). Grab the text blocks.
+  // The model interleaves brief narration text with search tool calls
+  // (e.g. "Let me search for..."). Only the LAST text block should be the
+  // final JSON answer, so use that rather than joining every text block.
   const textBlocks = data.content.filter(b => b.type === 'text').map(b => b.text);
-  const raw = textBlocks.join('\n').trim();
+  const raw = (textBlocks[textBlocks.length - 1] || '').trim();
 
   // Strip accidental code fences if present.
-  const cleaned = raw.replace(/^```json\s*/i, '').replace(/```\s*$/i, '').trim();
+  let cleaned = raw.replace(/^```json\s*/i, '').replace(/```\s*$/i, '').trim();
+
+  // Safety net: if there's still stray text around the JSON, extract just
+  // the outermost { ... } object.
+  const firstBrace = cleaned.indexOf('{');
+  const lastBrace = cleaned.lastIndexOf('}');
+  if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
+    cleaned = cleaned.slice(firstBrace, lastBrace + 1);
+  }
 
   let parsed;
   try {
     parsed = JSON.parse(cleaned);
   } catch (err) {
-    console.error('Could not parse model output as JSON:\n', cleaned);
+    console.error('Could not parse model output as JSON. Full response text blocks:\n', textBlocks.join('\n---\n'));
     throw err;
   }
 
