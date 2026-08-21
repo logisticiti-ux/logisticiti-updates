@@ -1,6 +1,96 @@
 {
-  "last_synced": "2026-08-16T10:00:00Z",
+  "last_synced": "2026-08-21T10:37:46.959Z",
   "items": [
+    {
+      "code": "ADV-001",
+      "category": "advisory",
+      "title": "Ver.di strike halts ops at six German ports including Hamburg and Bremerhaven",
+      "summary": "A coordinated 24-hour warning strike by around 5,000 dockworkers, called by union Ver.di on 17–18 August, effectively shut down container handling at Hamburg, Bremerhaven, Wilhelmshaven, Bremen, Emden, and Brake. The union is demanding an 8.2% wage rise while employers have offered 5.1% in a 19-month contract — with a third round of talks now set for 24–25 August, leaving further industrial action a real possibility. Shippers with cargo moving through North European gateways should check for vessel delays, missed rail/truck slots, and potential equipment shortages in the days following the stoppage.",
+      "source": "Splash247 / Container News",
+      "url": "https://splash247.com/six-german-ports-hit-by-24-hour-strike/",
+      "date": "2026-08-18"
+    },
+    {
+      "code": "MKT-001",
+      "category": "market",
+      "title": "Suez Canal transits hit two-year high as MSC, Maersk expand Red Sea sailings",
+      "summary": "Suez Canal traffic reached its highest volume since January 2024, with nearly 1,090 transits recorded in the four weeks to 16 August — a 14% rise on the prior period — as containerships and LNG carriers lead the recovery. MSC sent seven eastbound vessels through the Bab el Mandeb in a two-week span, running dark (AIS off), while Maersk reports that over 30% of its Asia-Europe volumes formerly routed via the Cape have returned to the Suez corridor. Despite the recovery, volumes remain 41% below pre-crisis levels, meaning freight rates and Cape routings will coexist for some time yet.",
+      "source": "Lloyd's List Intelligence",
+      "url": "https://www.lloydslistintelligence.com/resources/blog/red-sea-brief-20-august-2026",
+      "date": "2026-08-20"
+    },
+    {
+      "code": "MKT-002",
+      "category": "market",
+      "title": "Rhine hits record-low water at Kaub, cutting barge loads to 10–20% of capacity",
+      "summary": "A severe summer drought drove the Kaub gauge on the Rhine to 6 cm on 14 August — shattering the previous 2018 record of 25 cm — effectively making most inland Rhine ports unreachable by barge and forcing operators to reduce cargo loads to a fraction of normal. Freight forwarder association Clecat called it the most acute inland waterway disruption in decades, with surcharges exceeding €1,000 per container already appearing as shippers scramble to shift volumes to rail and road. Analysts warn conditions are unlikely to ease before October, putting sustained pressure on bulk commodities, chemicals, and containerised cargo moving along the Rotterdam–Basel corridor.",
+      "source": "Insurance Journal / Phys.org / Bloomberg",
+      "url": "https://www.insurancejournal.com/news/international/2026/08/12/881099.htm",
+      "date": "2026-08-20"
+    },
+    {
+      "code": "ADV-002",
+      "category": "advisory",
+      "title": "Lufthansa Cargo IT outage causes cargo backlog at Frankfurt and Munich hubs",
+      "summary": "A weekend IT service failure at Lufthansa Cargo's handling system provider brought cargo acceptance to a near-standstill at both Frankfurt and Munich airports for approximately six hours, leaving forwarders scrambling to rebook shipments and manage growing backlogs. Lufthansa Cargo confirmed the impairment was linked to a global disruption affecting the carrier's IT service provider, and said it worked with system partners to restore operations, though downstream delays persisted into the following days. Forwarders with time-sensitive shipments via LH hubs should verify booking status and expect potential rebooked freight well into the following week.",
+      "source": "The Loadstar",
+      "url": "https://theloadstar.com/it-outage-brings-chaos-to-lufthansa-cargo-handling-at-german-hubs/",
+      "date": "2026-08-18"
+    },
+    {
+      "code": "ADV-003",
+      "category": "advisory",
+      "title": "US Section 338 tariffs on broad range of Canadian goods take effect 19 August",
+      "summary": "A new 50% ad valorem Section 338 tariff on a wide range of Canadian imports — spanning cement, furniture, textiles, paper, cosmetics, and sporting goods — came into force on 19 August 2026 following presidential proclamations signed on 20 July. The duties stack on top of existing ordinary tariffs and respond to Canadian trade barriers in dairy, motor vehicles, and alcoholic beverages, though the scope covers hundreds of HTS lines far beyond those three categories. Importers of Canadian-origin goods should urgently review their HTS classifications, landed-cost models, and bonded warehouse strategies to understand the full cumulative duty exposure.",
+      "source": "Zonos / OIA Global",
+      "url": "https://zonos.com/docs/guides/us-tariff-changes",
+      "date": "2026-08-19"
+    },
+    {
+      "code": "OPN-001",
+      "category": "opinion",
+      "title": "Hapag-Lloyd's $4.2bn ZIM acquisition faces growing regulatory and Israeli pushback",
+      "summary": "Brazil's competition authority CADE has opened a full-form review of Hapag-Lloyd's proposed $4.2 billion acquisition of ZIM, and Israeli government officials are reportedly leaning toward rejecting the deal — complicating a transaction that ZIM shareholders approved by 97.3% in May. Freight forwarders and shippers who backed the consolidation in the hope of a streamlined service offering are now facing the prospect of an extended limbo period, or even a deal collapse, with closure now unlikely before late 2026 at the earliest. Industry observers note that the combined fleet of 400-plus vessels exceeding 3 million TEU capacity would significantly reshape competition on Transpacific, Intra-Asia, and Mediterranean lanes.",
+      "source": "gCaptain / Seeking Alpha / MLex",
+      "url": "https://gcaptain.com/hapag-lloyds-zim-takeover-hits-regulatory-headwinds/",
+      "date": "2026-08-20"
+    },
+    {
+      "code": "ADV-004",
+      "category": "advisory",
+      "title": "DHL Express opens €177m Shenzhen Super Gateway, triples throughput capacity",
+      "summary": "DHL Express has completed a four-year, €177 million ($205m) expansion of its Shenzhen Bao'an International Airport gateway — its largest-ever investment in mainland China — tripling daily processing capacity to approximately 900–992 tonnes and creating over 1,000 jobs. Alongside the hub opening, DHL launched a new daily Boeing 767 freighter routing connecting Shanghai, Bangkok, Bahrain, and Brussels, adding up to 50 tonnes of daily capacity on a corridor spanning Southeast Asia, the Middle East, and Europe. The move is strategically timed as global supply chains adapt to post-de minimis trade patterns and growing demand from data centre, semiconductor, and life-sciences shippers.",
+      "source": "DHL Group / FreightWaves / Logistics Management",
+      "url": "https://www.freightwaves.com/news/dhl-express-triples-shenzhen-air-cargo-capacity-with-terminal-expansion",
+      "date": "2026-08-13"
+    },
+    {
+      "code": "ADV-005",
+      "category": "advisory",
+      "title": "Saudia Cargo launches twice-weekly Dhaka–Frankfurt dedicated freighter service",
+      "summary": "Saudia Cargo inaugurated a new twice-weekly scheduled freighter service between Dhaka, Bangladesh and Frankfurt, Germany on 14 August, targeting textiles, pharmaceuticals, industrial equipment, and e-commerce cargo — sectors where Bangladesh is a growing export powerhouse. The route broadens the carrier's intercontinental reach and is backed by fleet expansion plans including four Boeing 777-200 freighters, as well as a July interline agreement with Riyadh Cargo aimed at extending connectivity across South Asia, the Gulf, and Australia. For forwarders moving Bangladeshi garment or pharma exports to Europe, this adds a direct freighter option that was previously unavailable.",
+      "source": "Air Cargo News / Air Cargo Week",
+      "url": "https://www.aircargonews.net/airlines/2026/08/saudia-cargo-begins-dhaka-frankfurt-route/",
+      "date": "2026-08-17"
+    },
+    {
+      "code": "MKT-003",
+      "category": "market",
+      "title": "Transpacific air cargo remains severely capacity-constrained from Taiwan and Korea",
+      "summary": "AI server shipments and semiconductor demand out of Taiwan and South Korea continue to absorb available freighter capacity on Transpacific lanes, leaving general cargo shippers locked out and forcing pre-bookings two to three weeks in advance. South China air cargo flows face additional pressure from typhoon-related disruptions that are also pushing some ocean cargo to air mode, compounding the tightness. Shippers using East Asia–North America air routes should consider South China origin alternatives where feasible to access relatively looser capacity, and lock in space well ahead of the traditional Q4 peak season build-up.",
+      "source": "J.M. Rodgers Co.",
+      "url": "https://www.jmrodgers.com/august-2026-freight-market-update/",
+      "date": "2026-08-06"
+    },
+    {
+      "code": "MKT-004",
+      "category": "market",
+      "title": "Delta Cargo partners with CargoAi to give 30,000+ forwarders real-time digital access",
+      "summary": "Delta Cargo has signed a partnership with CargoAi that connects over 30,000 freight forwarders to real-time rates, available capacity, and eBooking through CargoAi's platform and direct TMS integrations, with an initial rollout across 15 markets covering general cargo. The move accelerates Delta Cargo's digital transformation agenda and signals a broader industry push to put capacity directly in forwarders' hands through technology rather than traditional sales channels. For forwarders on US-routed air cargo, this means faster price discovery and booking confirmation without having to go through offline airline communication channels.",
+      "source": "Air Cargo Week",
+      "url": "https://aircargoweek.com/",
+      "date": "2026-08-19"
+    },
     {
       "code": "MKT-041",
       "category": "market",
